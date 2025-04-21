@@ -88,10 +88,10 @@ def perform_search_selenium(keywords, _, location):
 
         time.sleep(random.uniform(2, 4))
 
-    print("✅ Toutes les recherches ont été effectuées.")
+        print("✅ Toutes les recherches ont été effectuées.")
     try:
-    input("🔚 Appuyez sur Entrée pour fermer le navigateur...")
-    driver.quit()
-except Exception as e:
-    print(f"ℹ️ Le navigateur a probablement été fermé manuellement. ({e})")
-    print("🔁 Retour au menu principal...")
+        input("🔚 Appuyez sur Entrée pour fermer le navigateur...")
+        driver.quit()
+    except Exception as e:
+        print(f"ℹ️ Le navigateur a probablement été fermé manuellement. ({e})")
+        print("🔁 Retour au menu principal...")
