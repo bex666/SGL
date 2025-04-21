@@ -43,8 +43,22 @@ def afficher_localisation():
 
 def infos_ip():
     info = get_ip_info()
-    print("📡 Détails IP :")
-    pprint(info)
+
+    if "error" in info:
+        print("❌ Impossible de récupérer les infos IP :", info["error"])
+        return
+
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("🌐 INFORMATIONS SUR L'ADRESSE IP")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print(f"🔸 IP Publique : {info.get('query', 'N/A')}")
+    print(f"📍 Pays       : {info.get('country', 'N/A')} ({info.get('countryCode', 'N/A')})")
+    print(f"🏙️  Région     : {info.get('regionName', 'N/A')} ({info.get('region', 'N/A')})")
+    print(f"🌆 Ville      : {info.get('city', 'N/A')}")
+    print(f"🛰️ FAI        : {info.get('isp', 'N/A')}")
+    print(f"📡 Organisation : {info.get('org', 'N/A')}")
+    print(f"🔁 TOR utilisé : {'Oui' if is_tor_used() else 'Non'}")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     input("Appuyez sur Entrée pour revenir au menu...")
 
 def modifier_keywords():
@@ -53,6 +67,7 @@ def modifier_keywords():
 def quitter():
     print("❌ Sortie")
     exit()
+
 
 
 
@@ -86,7 +101,7 @@ menu_actions = {
     "2": ("Planificateur de recherche", planifier_recherche),
     "3": ("Choisir une localisation", choisir_localisation),
     "4": ("Configurer le navigateur et/ou vérifier la localisation (Google Maps)", afficher_localisation),
-    "5": ("Vérification et informations IP", infos_ip),
     "6": ("Modifier la bibliothèque de mots-clés", modifier_keywords),
+    "5": ("Vérification et informations IP", infos_ip),
     "0": ("Quitter le programme", quitter)
 }
