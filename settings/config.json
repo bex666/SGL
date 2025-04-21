@@ -1,0 +1,16 @@
+
+{
+  "keywords_file": "settings/mots_cles.txt",
+  "location": {
+    "city": "Paris",
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "region": "Île-de-France",
+    "country": "France"
+  },
+  "schedule_mode": 1,
+  "interval_minutes": 15,
+  "custom_start": "08:00",
+  "custom_end": "20:00",
+  "cycles": 5
+}
