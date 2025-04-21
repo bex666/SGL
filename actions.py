@@ -55,40 +55,15 @@ def quitter():
     exit()
 
 
-def verifier_navigateur():
-    config = load_config()
-    loc = config.get("location") or choose_location()
 
-    options = Options()
-    options.add_argument("--user-data-dir=/home/sgl/.config/selenium_profile")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-
-    try:
-        print("🚀 Lancement du navigateur de test...")
-        driver = uc.Chrome(options=options, user_data_dir="/home/sgl/.config/selenium_profile")
-    except Exception as e:
-        print(f"⚠️ Erreur : {e}")
-        return
-
-    driver.execute_cdp_cmd("Emulation.setGeolocationOverride", {
-        "latitude": loc['latitude'],
-        "longitude": loc['longitude'],
-        "accuracy": 100
-    })
-
-    driver.get("https://www.google.com/maps")
-    input("🔎 Vérifie la localisation dans le navigateur, puis appuie sur Entrée...")
-    driver.quit()
 
 
 menu_actions = {
     "1": ("Lancer la recherche immédiatement", lancer_recherche),
     "2": ("Planificateur de recherche", planifier_recherche),
     "3": ("Choisir une localisation", choisir_localisation),
-    "4": ("Vérifier la localisation (Google Maps)", afficher_localisation),
+    "4": ("Configurer le navigateur et/ou vérifier la localisation (Google Maps)", afficher_localisation),
     "5": ("Vérification et informations IP", infos_ip),
     "6": ("Modifier la bibliothèque de mots-clés", modifier_keywords),
-    "9": ("Vérifier le navigateur et la localisation", verifier_navigateur),
     "0": ("Quitter le programme", quitter)
 }
