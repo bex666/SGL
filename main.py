@@ -7,6 +7,7 @@ from modules.search_selenium import perform_search_selenium
 from modules.scheduler import run_scheduled_search
 from modules.keyword_manager import edit_keywords
 from modules.maps_viewer import view_location_on_google_maps
+from actions import menu_actions
 
 def load_config():
     with open("settings/config.json", "r", encoding="utf-8") as f:
@@ -46,15 +47,6 @@ def quitter():
     print("❌ Sortie")
     exit()
 
-menu_actions = {
-    "1": ("Lancer la recherche immédiatement", lancer_recherche),
-    "2": ("Planificateur de recherche", planifier_recherche),
-    "3": ("Choisir une localisation", choisir_localisation),
-    "4": ("Vérifier la localisation (Google Maps)", afficher_localisation),
-    "5": ("Vérification et informations IP", infos_ip),
-    "6": ("Modifier la bibliothèque de mots-clés", modifier_keywords),
-    "0": ("Quitter le programme", quitter)
-}
 
 def main():
     while True:
