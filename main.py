@@ -7,7 +7,7 @@ from modules.search_selenium import perform_search_selenium
 from modules.scheduler import run_scheduled_search
 from modules.keyword_manager import edit_keywords
 from modules.maps_viewer import view_location_on_google_maps
-from actions import menu_actions
+from actions import menu_actions, afficher_menu
 
 def load_config():
     with open("settings/config.json", "r", encoding="utf-8") as f:
@@ -61,8 +61,7 @@ def main():
         print(f"📍 Localisation : {loc.get('city', '')}, {loc.get('region', '')}, {loc.get('country', '')}")
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
-        for key, (desc, _) in menu_actions.items():
-            print(f"{key}. {desc}")
+        afficher_menu()
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
         choix = input("Votre choix : ")

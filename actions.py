@@ -58,6 +58,29 @@ def quitter():
 
 
 
+
+def afficher_menu():
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("🎛️  MENU PRINCIPAL")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print("")
+    print("🔍 RECHERCHE :")
+    print("   1️⃣  Lancer la recherche immédiatement")
+    print("   2️⃣  Lancer une recherche planifiée")
+    print("")
+    print("🛠️ CONFIGURATION :")
+    print("   3️⃣  Choisir une localisation")
+    print("   4️⃣  Configurer le navigateur et/ou vérifier la localisation (Google Maps)")
+    print("   6️⃣  Modifier la bibliothèque de mots-clés")
+    print("")
+    print("🌐 INFORMATIONS :")
+    print("   5️⃣  Vérification et informations IP")
+    print("")
+    print("❌ QUITTER :")
+    print("   0️⃣  Quitter le programme")
+    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+
+
 menu_actions = {
     "1": ("Lancer la recherche immédiatement", lancer_recherche),
     "2": ("Planificateur de recherche", planifier_recherche),
