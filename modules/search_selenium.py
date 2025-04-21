@@ -17,7 +17,16 @@ def perform_search_selenium(keywords, _, location):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    driver = uc.Chrome(options=options, user_data_dir=profile_path)
+    print("🚀 Lancement du navigateur Chrome...")
+    try:
+        print("🚀 Lancement de Chrome avec session persistante...")
+        driver = uc.Chrome(options=options, user_data_dir=profile_path)
+    except Exception as e:
+        print(f"⚠️ Échec de lancement avec profil. Raison : {e}")
+        print("🧹 Nettoyage du cache...")
+        import shutil
+        shutil.rmtree(profile_path, ignore_errors=True)
+        driver = uc.Chrome(options=options)  # fallback sans profil
     driver.execute_cdp_cmd("Emulation.setGeolocationOverride", {
         "latitude": location['latitude'],
         "longitude": location['longitude'],
